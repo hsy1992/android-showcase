@@ -54,7 +54,7 @@ allprojects {
         lockAllConfigurations()
     }
 }
-
+//对所有Child Project的配置
 subprojects {
     tasks.withType<Test> {
         maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1

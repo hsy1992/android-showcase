@@ -1,9 +1,10 @@
+// 设置默认build构建文件
 rootProject.buildFileName = "build.gradle.kts"
 
+//版本目录 libs为目录
 enableFeaturePreview("VERSION_CATALOGS")
 
-// Set single lock file (gradle.lockfile)
-// This preview feature should be enabled by default in Gradle 7
+// 依赖锁定
 // More: https://docs.gradle.org/current/userguide/dependency_locking.html#single_lock_file_per_project
 enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 
@@ -16,6 +17,7 @@ include(
 )
 
 // Gradle plugins are added via plugin management, not the classpath
+// Gradle 插件是通过插件管理而不是类路径添加的
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -35,19 +37,24 @@ pluginManagement {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
         id("org.jetbrains.kotlin.android") version kotlinVersion
 
+        //navigation safe-args传递参数
         val navigationVersion: String by settings
         id("androidx.navigation.safeargs.kotlin") version navigationVersion
 
+        //静态代码检测工具
         val detektVersion: String by settings
         id("io.gitlab.arturbosch.detekt") version detektVersion
 
+        //kotlin lint 检查代码
         val ktlintGradleVersion: String by settings
         id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
 
+        //使用junit5 的插件
         val androidJUnit5Version: String by settings
         id("de.mannodermaus.android-junit5") version androidJUnit5Version
     }
 
+    //解析规则
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {

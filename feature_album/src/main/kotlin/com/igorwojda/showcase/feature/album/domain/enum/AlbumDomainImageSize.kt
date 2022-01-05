@@ -1,6 +1,6 @@
 package com.igorwojda.showcase.feature.album.domain.enum
 
-internal enum class AlbumDomainImageSize {
+enum class AlbumDomainImageSize {
     SMALL,
     MEDIUM,
     LARGE,
